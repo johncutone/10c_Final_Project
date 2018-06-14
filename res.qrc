@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>gameMap.png</file>
+        <file>realMap.png</file>
+        <file>castle.png</file>
+    </qresource>
+</RCC>
