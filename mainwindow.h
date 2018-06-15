@@ -38,6 +38,7 @@ private slots:
     void handleTakeTurn();
 private:
     Ui::MainWindow *ui;
+    int on_challenge(int x, int y);
 
 };
 

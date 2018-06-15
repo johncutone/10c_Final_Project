@@ -14,6 +14,14 @@
 #include <QPixmap>
 #include <random>
 
+const int GORDO_CODE = 1;
+const int CASTLE_CODE = 2;
+const int BELLA_CODE = 3;
+const int STAIRS_CODE = 4;
+const int IAODD_CODE = 5;
+const int ETWANET_CODE = 6;
+const int YAYAH_CODE = 7;
+const int JUG_CODE = 8;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -79,11 +87,34 @@ void MainWindow::handleTakeTurn()
     else ui->drink_lab->setText("Not this time...");
 }
 
+int MainWindow::on_challenge(int x, int y)
+{
+    // Gordo, Castle, Bellawella, Stairs, Ioadd, Etwanet, Yayao, Jug
+    if ((x >= 40 && x <= 240) && (y == -420 || y == -440))
+        return GORDO_CODE;
+    else if ((x >= 420 && x <= 520) && (y == -440 || y == -460))
+        return CASTLE_CODE;
+    else if ((x >= 500 && x <= 620) && (y == -320 || y == -340))
+        return BELLA_CODE;
+    else if ((x >= 480 && x <= 620) && (y == -80 || y == -100))
+        return STAIRS_CODE;
+    else if ((x >= 240 && x <= 380) && (y == -320 || y == -340))
+        return IAODD_CODE;
+    else if ((x >= 160 && x <= 260) && (y == -40 || y == -60))
+        return ETWANET_CODE;
+    else if ((x >= 60 && x <=140) && (y == -260 || y == -280))
+        return YAYAH_CODE;
+    else if ((x >= 260 && x <= 400) && (y == -200 || y == -220))
+        return JUG_CODE;
+    else
+        return 0;
+}
+
 void MainWindow::handleButton_r() {
     // don't allow movement if no walks left
     QString text_int = ui->walks_num->text();
     int x = text_int.toInt();
-    if (x == 0) return;
+    //if (x == 0) return;
 
     // set dummy to pointer of player whos turn it is
     QGraphicsEllipseItem *dummy;
@@ -114,13 +145,24 @@ void MainWindow::handleButton_r() {
 
     qDebug() << "new position: (" << dummy->x() << ", " << dummy->y() << ") \n";
 
+    // check for challenge
+    int chal = on_challenge(dummy->x(), dummy->y());
+    if (chal > 4) {
+        ui->text_output->setText("You've made it to a solo challenge!");
+    }
+    else if (chal > 0) {
+        ui->text_output->setText("You've made it to a duo challenge!");
+    }
+    else
+        ui->text_output->setText("");
+
     dummy = nullptr;
 }
 void MainWindow::handleButton_l() {
     // don't allow movement if no walks left
     QString text_int = ui->walks_num->text();
     int x = text_int.toInt();
-    if (x == 0) return;
+    //if (x == 0) return;
 
     // set dummy to correct player icon
     QGraphicsEllipseItem *dummy;
@@ -151,13 +193,24 @@ void MainWindow::handleButton_l() {
 
     qDebug() << "new position: (" << dummy->x() << ", " << dummy->y() << ") \n";
 
+    // check for challenge
+    int chal = on_challenge(dummy->x(), dummy->y());
+    if (chal > 4) {
+        ui->text_output->setText("You've made it to a solo challenge!");
+    }
+    else if (chal > 0) {
+        ui->text_output->setText("You've made it to a duo challenge!");
+    }
+    else
+        ui->text_output->setText("");
+
     dummy = nullptr;
 }
 void MainWindow::handleButton_d() {
     // don't allow movement if no walks left
     QString text_int = ui->walks_num->text();
     int x = text_int.toInt();
-    if (x == 0) return;
+    //if (x == 0) return;
 
     // set dummy to correct player icon
     QGraphicsEllipseItem *dummy;
@@ -188,13 +241,24 @@ void MainWindow::handleButton_d() {
 
     qDebug() << "new position: (" << dummy->x() << ", " << dummy->y() << ") \n";
 
+    // check for challenge
+    int chal = on_challenge(dummy->x(), dummy->y());
+    if (chal > 4) {
+        ui->text_output->setText("You've made it to a solo challenge!");
+    }
+    else if (chal > 0) {
+        ui->text_output->setText("You've made it to a duo challenge!");
+    }
+    else
+        ui->text_output->setText("");
+
     dummy = nullptr;
 }
 void MainWindow::handleButton_u() {
     // don't allow movement if no walks left
     QString text_int = ui->walks_num->text();
     int x = text_int.toInt();
-    if (x == 0) return;
+    //if (x == 0) return;
 
     // set dummy to correct player icon
     QGraphicsEllipseItem *dummy;
@@ -224,6 +288,17 @@ void MainWindow::handleButton_u() {
     }
 
     qDebug() << "new position: (" << dummy->x() << ", " << dummy->y() << ") \n";
+
+    // check for challenge
+    int chal = on_challenge(dummy->x(), dummy->y());
+    if (chal > 4) {
+        ui->text_output->setText("You've made it to a solo challenge!");
+    }
+    else if (chal > 0) {
+        ui->text_output->setText("You've made it to a duo challenge!");
+    }
+    else
+        ui->text_output->setText("");
 
     dummy = nullptr;
 }

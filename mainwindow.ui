@@ -595,7 +595,7 @@
      </font>
     </property>
     <property name="text">
-     <string>YaYao</string>
+     <string>YaYah</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -802,6 +802,19 @@
     </property>
     <property name="text">
      <string>Final Destination</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="text_output">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>280</y>
+      <width>271</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
