@@ -82,6 +82,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->duo_chal_button, SIGNAL (released()), this, SLOT (handleGenDuoChal()));
     connect(ui->solo_chal_comp, SIGNAL (clicked()), this , SLOT (handleSoloComp()));
     connect(ui->duo_chal_comp, SIGNAL (clicked()), this , SLOT (handleDuoComp()));
+    connect(ui->player1_turn, SIGNAL (clicked()), this, SLOT (handleIcon1selected()));
+    connect(ui->player2_turn, SIGNAL (clicked()), this, SLOT (handleIcon2selected()));
+    connect(ui->player3_turn, SIGNAL (clicked()), this, SLOT (handleIcon3selected()));
+    connect(ui->player4_turn, SIGNAL (clicked()), this, SLOT (handleIcon4selected()));
+    connect(ui->player5_turn, SIGNAL (clicked()), this, SLOT (handleIcon5selected()));
+    connect(ui->player6_turn, SIGNAL (clicked()), this, SLOT (handleIcon6selected()));
 
     // connect start turn button
     connect(ui->roll_button, SIGNAL (released()), this, SLOT (handleTakeTurn()));
@@ -103,12 +109,8 @@ void MainWindow::handleTakeTurn()
         ui->drink_lab->setText("Drink!!!");
     else ui->drink_lab->setText("Not this time...");
 
-    // reset dislpay
-    ui->duo_chal_comp->setChecked(false);
-    ui->solo_chal_comp->setChecked(false);
-    ui->text_output->setText("");
-    ui->solo_chal_text->setText("");
-    ui->duo_chal_text->setText("");
+    // reset board
+    easyReset();
 }
 
 void MainWindow::handleGenSoloChal()
@@ -432,6 +434,16 @@ int MainWindow::on_challenge(int x, int y)
         return 0;
 }
 
+// resets all features not on board or status board
+void MainWindow::easyReset()
+{
+    ui->duo_chal_comp->setChecked(false);
+    ui->solo_chal_comp->setChecked(false);
+    ui->text_output->setText("");
+    ui->solo_chal_text->setText("");
+    ui->duo_chal_text->setText("");
+}
+
 void MainWindow::handleButton_r() {
     // don't allow movement if no walks left
     QString text_int = ui->walks_num->text();
@@ -623,6 +635,37 @@ void MainWindow::handleButton_u() {
         ui->text_output->setText("");
 
     dummy = nullptr;
+}
+
+// these are just to reset board when switching players
+void MainWindow::handleIcon1selected()
+{
+    easyReset();
+}
+
+void MainWindow::handleIcon2selected()
+{
+    easyReset();
+}
+
+void MainWindow::handleIcon3selected()
+{
+    easyReset();
+}
+
+void MainWindow::handleIcon4selected()
+{
+    easyReset();
+}
+
+void MainWindow::handleIcon5selected()
+{
+    easyReset();
+}
+
+void MainWindow::handleIcon6selected()
+{
+    easyReset();
 }
 
 MainWindow::~MainWindow()

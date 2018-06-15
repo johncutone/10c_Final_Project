@@ -40,10 +40,16 @@ private slots:
     void handleGenDuoChal();
     void handleSoloComp();
     void handleDuoComp();
+    void handleIcon1selected();
+    void handleIcon2selected();
+    void handleIcon3selected();
+    void handleIcon4selected();
+    void handleIcon5selected();
+    void handleIcon6selected();
 private:
     Ui::MainWindow *ui;
     int on_challenge(int x, int y);
-
+    void easyReset();
 };
 
 #endif // MAINWINDOW_H
