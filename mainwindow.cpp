@@ -68,8 +68,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::handleStartTurn()
 {
-    // only start turn when player is selected
-    if (!ui->player1_turn->isChecked()) return;
     // generate number of walks
     int walks = (rand() % 10) + 1;
     ui->walks_num->setText(QString::number(walks));
