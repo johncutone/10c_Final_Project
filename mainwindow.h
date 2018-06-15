@@ -35,6 +35,7 @@ private slots:
     void handleButton_l();
     void handleButton_u();
     void handleButton_d();
+    void handleStartTurn();
 private:
     Ui::MainWindow *ui;
 

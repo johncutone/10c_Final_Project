@@ -12,6 +12,7 @@
 #include <QGraphicsItem>
 #include <QPainter>
 #include <QPixmap>
+#include <random>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -56,12 +57,37 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->moveDown, SIGNAL (released()), this, SLOT (handleButton_d()));
     connect(ui->moveUp, SIGNAL (released()), this, SLOT (handleButton_u()));
 
+    // connect start turn button
+    connect(ui->roll_button, SIGNAL (released()), this, SLOT (handleStartTurn()));
+
 
     ui->view->setScene(scene);
+   // ui->walks_num->text.toInt()
 
 }
 
+void MainWindow::handleStartTurn()
+{
+    // only start turn when player is selected
+    if (!ui->player1_turn->isChecked()) return;
+    // generate number of walks
+    int walks = (rand() % 10) + 1;
+    ui->walks_num->setText(QString::number(walks));
+
+    // generate chance of drinking
+    int drink = (rand() % 2);
+    if (drink == 1)
+        ui->drink_lab->setText("Drink!!!");
+    else ui->drink_lab->setText("Not this time...");
+}
+
 void MainWindow::handleButton_r() {
+    // don't allow movement if no walks left
+    QString text_int = ui->walks_num->text();
+    int x = text_int.toInt();
+    if (x == 0) return;
+
+    // set dummy to pointer of player whos turn it is
     QGraphicsEllipseItem *dummy;
     if (ui->player1_turn->isChecked())
         dummy = p1;
@@ -77,12 +103,28 @@ void MainWindow::handleButton_r() {
         dummy = p6;
     else return;
 
-    if (dummy->x() + 20 <= 620)
+    qDebug() << "old position: (" << dummy->x() << ", " << dummy->y() << ") \n";
+
+    // move icon
+    if (dummy->x() + 20 <= 620) {
         dummy->moveBy(20, 0);
+        // subtract one from walks
+        text_int = ui->walks_num->text();
+        x = text_int.toInt() - 1;
+        if (x >= 0) ui->walks_num->setText(QString::number(x));
+    }
+
+    qDebug() << "new position: (" << dummy->x() << ", " << dummy->y() << ") \n";
 
     dummy = nullptr;
 }
 void MainWindow::handleButton_l() {
+    // don't allow movement if no walks left
+    QString text_int = ui->walks_num->text();
+    int x = text_int.toInt();
+    if (x == 0) return;
+
+    // set dummy to correct player icon
     QGraphicsEllipseItem *dummy;
     if (ui->player1_turn->isChecked())
         dummy = p1;
@@ -98,12 +140,28 @@ void MainWindow::handleButton_l() {
         dummy = p6;
     else return;
 
-    if (dummy->x() - 20 >= 0)
+    qDebug() << "old position: (" << dummy->x() << ", " << dummy->y() << ") \n";
+
+    // move player icon
+    if (dummy->x() - 20 >= 0) {
         dummy->moveBy(-20, 0);
+        // subtract one from walks
+        text_int = ui->walks_num->text();
+        x = text_int.toInt() - 1;
+        if (x >= 0) ui->walks_num->setText(QString::number(x));
+    }
+
+    qDebug() << "new position: (" << dummy->x() << ", " << dummy->y() << ") \n";
 
     dummy = nullptr;
 }
 void MainWindow::handleButton_d() {
+    // don't allow movement if no walks left
+    QString text_int = ui->walks_num->text();
+    int x = text_int.toInt();
+    if (x == 0) return;
+
+    // set dummy to correct player icon
     QGraphicsEllipseItem *dummy;
     if (ui->player1_turn->isChecked())
         dummy = p1;
@@ -119,12 +177,28 @@ void MainWindow::handleButton_d() {
         dummy = p6;
     else return;
 
-    if (dummy->y() + 20 <= 0)
+    qDebug() << "old position: (" << dummy->x() << ", " << dummy->y() << ") \n";
+
+    // move player icon
+    if (dummy->y() + 20 <= 0) {
         dummy->moveBy(0, 20);
+        // subtract one from walks
+        text_int = ui->walks_num->text();
+        x = text_int.toInt() - 1;
+        if (x >= 0) ui->walks_num->setText(QString::number(x));
+    }
+
+    qDebug() << "new position: (" << dummy->x() << ", " << dummy->y() << ") \n";
 
     dummy = nullptr;
 }
 void MainWindow::handleButton_u() {
+    // don't allow movement if no walks left
+    QString text_int = ui->walks_num->text();
+    int x = text_int.toInt();
+    if (x == 0) return;
+
+    // set dummy to correct player icon
     QGraphicsEllipseItem *dummy;
     if (ui->player1_turn->isChecked())
         dummy = p1;
@@ -140,8 +214,18 @@ void MainWindow::handleButton_u() {
         dummy = p6;
     else return;
 
-    if (dummy->y() - 20 >= -460)
+    qDebug() << "old position: (" << dummy->x() << ", " << dummy->y() << ") \n";
+
+    // move player icon
+    if (dummy->y() - 20 >= -460) {
         dummy->moveBy(0, -20);
+        // subtract one from walks
+        text_int = ui->walks_num->text();
+        x = text_int.toInt() - 1;
+        if (x >= 0) ui->walks_num->setText(QString::number(x));
+    }
+
+    qDebug() << "new position: (" << dummy->x() << ", " << dummy->y() << ") \n";
 
     dummy = nullptr;
 }
