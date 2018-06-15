@@ -59,6 +59,20 @@ MainWindow::MainWindow(QWidget *parent) :
     p6->setBrush(Qt::yellow);
     scene->addItem(p6);
 
+    // Don't allow buttons to be checked manually
+    ui->solo_p1->setCheckable(false);
+    ui->solo_p2->setCheckable(false);
+    ui->solo_p3->setCheckable(false);
+    ui->solo_p4->setCheckable(false);
+    ui->solo_p5->setCheckable(false);
+    ui->solo_p6->setCheckable(false);
+    ui->duo_p1->setCheckable(false);
+    ui->duo_p2->setCheckable(false);
+    ui->duo_p3->setCheckable(false);
+    ui->duo_p4->setCheckable(false);
+    ui->duo_p5->setCheckable(false);
+    ui->duo_p6->setCheckable(false);
+
     // connect buttons to move functions
     connect(ui->moveRight, SIGNAL (released()), this, SLOT (handleButton_r()));
     connect(ui->moveLeft, SIGNAL (released()), this, SLOT (handleButton_l()));
@@ -67,7 +81,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // connect start turn button
     connect(ui->roll_button, SIGNAL (released()), this, SLOT (handleTakeTurn()));
-
 
     ui->view->setScene(scene);
    // ui->walks_num->text.toInt()
@@ -85,6 +98,9 @@ void MainWindow::handleTakeTurn()
     if (drink == 1)
         ui->drink_lab->setText("Drink!!!");
     else ui->drink_lab->setText("Not this time...");
+
+    ui->duo_chal_comp->setChecked(false);
+    ui->solo_chal_comp->setChecked(false);
 }
 
 int MainWindow::on_challenge(int x, int y)
