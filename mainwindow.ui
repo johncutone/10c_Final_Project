@@ -417,7 +417,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Start turn</string>
+     <string>Take turn</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">

@@ -58,7 +58,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->moveUp, SIGNAL (released()), this, SLOT (handleButton_u()));
 
     // connect start turn button
-    connect(ui->roll_button, SIGNAL (released()), this, SLOT (handleStartTurn()));
+    connect(ui->roll_button, SIGNAL (released()), this, SLOT (handleTakeTurn()));
 
 
     ui->view->setScene(scene);
@@ -66,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
-void MainWindow::handleStartTurn()
+void MainWindow::handleTakeTurn()
 {
     // generate number of walks
     int walks = (rand() % 10) + 1;
