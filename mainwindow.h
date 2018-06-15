@@ -36,6 +36,8 @@ private slots:
     void handleButton_u();
     void handleButton_d();
     void handleTakeTurn();
+    void handleGenSoloChal();
+    //void handleGenDuoChal();
 private:
     Ui::MainWindow *ui;
     int on_challenge(int x, int y);

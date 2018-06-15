@@ -78,6 +78,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->moveLeft, SIGNAL (released()), this, SLOT (handleButton_l()));
     connect(ui->moveDown, SIGNAL (released()), this, SLOT (handleButton_d()));
     connect(ui->moveUp, SIGNAL (released()), this, SLOT (handleButton_u()));
+    connect(ui->solo_chal_button, SIGNAL (released()), this, SLOT (handleGenSoloChal()));
 
     // connect start turn button
     connect(ui->roll_button, SIGNAL (released()), this, SLOT (handleTakeTurn()));
@@ -99,8 +100,104 @@ void MainWindow::handleTakeTurn()
         ui->drink_lab->setText("Drink!!!");
     else ui->drink_lab->setText("Not this time...");
 
+    // reset dislpay
     ui->duo_chal_comp->setChecked(false);
     ui->solo_chal_comp->setChecked(false);
+    ui->text_output->setText("");
+    ui->solo_chal_text->setText("");
+    ui->duo_chal_text->setText("");
+}
+
+void MainWindow::handleGenSoloChal()
+{
+    // set dummy to pointer of player whos turn it is
+    QGraphicsEllipseItem *dummy;
+    if (ui->player1_turn->isChecked())
+        dummy = p1;
+    else if (ui->player2_turn->isChecked())
+        dummy = p2;
+    else if (ui->player3_turn->isChecked())
+        dummy = p3;
+    else if (ui->player4_turn->isChecked())
+        dummy = p4;
+    else if (ui->player5_turn->isChecked())
+        dummy = p5;
+    else if (ui->player6_turn->isChecked())
+        dummy = p6;
+    else return;
+
+    // Iaodd challenge
+    if(on_challenge(dummy->x(), dummy->y()) == 5) {
+        int x = rand() % 4;
+        switch(x) {
+            case 0: ui->solo_chal_text->setText("Iaodd challenge 1");
+                    dummy = nullptr;
+                    return;
+            case 1: ui->solo_chal_text->setText("Iaodd challenge 2");
+                    dummy = nullptr;
+                    return;
+            case 2: ui->solo_chal_text->setText("Iaodd challenge 3");
+                    dummy = nullptr;
+                    return;
+            case 3: ui->solo_chal_text->setText("Iaodd challenge 4");
+                    dummy = nullptr;
+                    return;
+        }
+    }
+    // Etwanet challenge
+    if(on_challenge(dummy->x(), dummy->y()) == 6) {
+        int x = rand() % 4;
+        switch(x) {
+            case 0: ui->solo_chal_text->setText("Etwanet challenge 1");
+                    dummy = nullptr;
+                    return;
+            case 1: ui->solo_chal_text->setText("Etwanet challenge 2");
+                    dummy = nullptr;
+                    return;
+            case 2: ui->solo_chal_text->setText("Etwanet challenge 3");
+                    dummy = nullptr;
+                    return;
+            case 3: ui->solo_chal_text->setText("Etwanet challenge 4");
+                    dummy = nullptr;
+                    return;
+        }
+    }
+    // yayah challenge
+    if(on_challenge(dummy->x(), dummy->y()) == 7) {
+        int x = rand() % 4;
+        switch(x) {
+            case 0: ui->solo_chal_text->setText("YaYah challenge 1");
+                    dummy = nullptr;
+                    return;
+            case 1: ui->solo_chal_text->setText("YaYah challenge 2");
+                    dummy = nullptr;
+                    return;
+            case 2: ui->solo_chal_text->setText("YaYah challenge 3");
+                    dummy = nullptr;
+                    return;
+            case 3: ui->solo_chal_text->setText("YaYah challenge 4");
+                    dummy = nullptr;
+                    return;
+        }
+    }
+    // Jug challenge
+    if(on_challenge(dummy->x(), dummy->y()) == 8) {
+        int x = rand() % 4;
+        switch(x) {
+            case 0: ui->solo_chal_text->setText("Jug challenge 1");
+                    dummy = nullptr;
+                    return;
+            case 1: ui->solo_chal_text->setText("Jug challenge 2");
+                    dummy = nullptr;
+                    return;
+            case 2: ui->solo_chal_text->setText("Jug challenge 3");
+                    dummy = nullptr;
+                    return;
+            case 3: ui->solo_chal_text->setText("Jug challenge 4");
+                    dummy = nullptr;
+                    return;
+        }
+    }
 }
 
 int MainWindow::on_challenge(int x, int y)
