@@ -1187,7 +1187,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Challenged Completed</string>
+          <string>Challenge Completed</string>
          </property>
         </widget>
        </item>

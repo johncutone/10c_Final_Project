@@ -79,6 +79,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->moveDown, SIGNAL (released()), this, SLOT (handleButton_d()));
     connect(ui->moveUp, SIGNAL (released()), this, SLOT (handleButton_u()));
     connect(ui->solo_chal_button, SIGNAL (released()), this, SLOT (handleGenSoloChal()));
+    connect(ui->duo_chal_button, SIGNAL (released()), this, SLOT (handleGenDuoChal()));
+    connect(ui->solo_chal_comp, SIGNAL (clicked()), this , SLOT (handleSoloComp()));
+    connect(ui->duo_chal_comp, SIGNAL (clicked()), this , SLOT (handleDuoComp()));
 
     // connect start turn button
     connect(ui->roll_button, SIGNAL (released()), this, SLOT (handleTakeTurn()));
@@ -130,16 +133,16 @@ void MainWindow::handleGenSoloChal()
     if(on_challenge(dummy->x(), dummy->y()) == 5) {
         int x = rand() % 4;
         switch(x) {
-            case 0: ui->solo_chal_text->setText("Iaodd challenge 1");
+            case 0: ui->solo_chal_text->setText("Iaodd River challenge 1");
                     dummy = nullptr;
                     return;
-            case 1: ui->solo_chal_text->setText("Iaodd challenge 2");
+            case 1: ui->solo_chal_text->setText("Iaodd River challenge 2");
                     dummy = nullptr;
                     return;
-            case 2: ui->solo_chal_text->setText("Iaodd challenge 3");
+            case 2: ui->solo_chal_text->setText("Iaodd River challenge 3");
                     dummy = nullptr;
                     return;
-            case 3: ui->solo_chal_text->setText("Iaodd challenge 4");
+            case 3: ui->solo_chal_text->setText("Iaodd River challenge 4");
                     dummy = nullptr;
                     return;
         }
@@ -184,20 +187,226 @@ void MainWindow::handleGenSoloChal()
     if(on_challenge(dummy->x(), dummy->y()) == 8) {
         int x = rand() % 4;
         switch(x) {
-            case 0: ui->solo_chal_text->setText("Jug challenge 1");
+            case 0: ui->solo_chal_text->setText("Jug Town challenge 1");
                     dummy = nullptr;
                     return;
-            case 1: ui->solo_chal_text->setText("Jug challenge 2");
+            case 1: ui->solo_chal_text->setText("Jug Town challenge 2");
                     dummy = nullptr;
                     return;
-            case 2: ui->solo_chal_text->setText("Jug challenge 3");
+            case 2: ui->solo_chal_text->setText("Jug Town challenge 3");
                     dummy = nullptr;
                     return;
-            case 3: ui->solo_chal_text->setText("Jug challenge 4");
+            case 3: ui->solo_chal_text->setText("Jug Town challenge 4");
                     dummy = nullptr;
                     return;
         }
     }
+    dummy = nullptr;
+}
+
+void MainWindow::handleGenDuoChal()
+{
+    // set dummy to pointer of player whos turn it is
+    QGraphicsEllipseItem *dummy;
+    if (ui->player1_turn->isChecked())
+        dummy = p1;
+    else if (ui->player2_turn->isChecked())
+        dummy = p2;
+    else if (ui->player3_turn->isChecked())
+        dummy = p3;
+    else if (ui->player4_turn->isChecked())
+        dummy = p4;
+    else if (ui->player5_turn->isChecked())
+        dummy = p5;
+    else if (ui->player6_turn->isChecked())
+        dummy = p6;
+    else return;
+
+    // Iaodd challenge
+    if(on_challenge(dummy->x(), dummy->y()) == 1) {
+        int x = rand() % 4;
+        switch(x) {
+            case 0: ui->duo_chal_text->setText("Gordo Ridge challenge 1");
+                    dummy = nullptr;
+                    return;
+            case 1: ui->duo_chal_text->setText("Gordo Ridge challenge 2");
+                    dummy = nullptr;
+                    return;
+            case 2: ui->duo_chal_text->setText("Gordo Ridge challenge 3");
+                    dummy = nullptr;
+                    return;
+            case 3: ui->duo_chal_text->setText("Gordo Ridge challenge 4");
+                    dummy = nullptr;
+                    return;
+        }
+    }
+    // Etwanet challenge
+    if(on_challenge(dummy->x(), dummy->y()) == 2) {
+        int x = rand() % 4;
+        switch(x) {
+            case 0: ui->duo_chal_text->setText("Castle challenge 1");
+                    dummy = nullptr;
+                    return;
+            case 1: ui->duo_chal_text->setText("Castle challenge 2");
+                    dummy = nullptr;
+                    return;
+            case 2: ui->duo_chal_text->setText("Castle challenge 3");
+                    dummy = nullptr;
+                    return;
+            case 3: ui->duo_chal_text->setText("Castle challenge 4");
+                    dummy = nullptr;
+                    return;
+        }
+    }
+    // yayah challenge
+    if(on_challenge(dummy->x(), dummy->y()) == 3) {
+        int x = rand() % 4;
+        switch(x) {
+            case 0: ui->duo_chal_text->setText("Bellawella challenge 1");
+                    dummy = nullptr;
+                    return;
+            case 1: ui->duo_chal_text->setText("Bellawella challenge 2");
+                    dummy = nullptr;
+                    return;
+            case 2: ui->duo_chal_text->setText("Bellawella challenge 3");
+                    dummy = nullptr;
+                    return;
+            case 3: ui->duo_chal_text->setText("Bellawella challenge 4");
+                    dummy = nullptr;
+                    return;
+        }
+    }
+    // Jug challenge
+    if(on_challenge(dummy->x(), dummy->y()) == 4) {
+        int x = rand() % 4;
+        switch(x) {
+            case 0: ui->duo_chal_text->setText("Stairs Beach challenge 1");
+                    dummy = nullptr;
+                    return;
+            case 1: ui->duo_chal_text->setText("Stairs Beach challenge 2");
+                    dummy = nullptr;
+                    return;
+            case 2: ui->duo_chal_text->setText("Stairs Beach challenge 3");
+                    dummy = nullptr;
+                    return;
+            case 3: ui->duo_chal_text->setText("Stairs Beach challenge 4");
+                    dummy = nullptr;
+                    return;
+        }
+    }
+    dummy = nullptr;
+}
+
+void MainWindow::handleSoloComp()
+{
+    // check appropriate players box
+    if (ui->player1_turn->isChecked()) {
+        // greater than 4 implies solo, othwerwise duo
+        if (on_challenge(p1->x(), p1->y()) > 4) {
+            ui->solo_p1->setCheckable(true);
+            ui->solo_p1->setChecked(true);
+        }
+        return;
+    }
+    else if (ui->player2_turn->isChecked()) {
+        // greater than 4 implies solo, othwerwise duo
+        if (on_challenge(p2->x(), p2->y()) > 4) {
+            ui->solo_p2->setCheckable(true);
+            ui->solo_p2->setChecked(true);
+        }
+        return;
+    }
+    else if (ui->player3_turn->isChecked()) {
+        // greater than 4 implies solo, othwerwise duo
+        if (on_challenge(p3->x(), p3->y()) > 4) {
+            ui->solo_p3->setCheckable(true);
+            ui->solo_p3->setChecked(true);
+        }
+        return;
+    }
+    else if (ui->player4_turn->isChecked()) {
+        // greater than 4 implies solo, othwerwise duo
+        if (on_challenge(p4->x(), p4->y()) > 4) {
+            ui->solo_p4->setCheckable(true);
+            ui->solo_p4->setChecked(true);
+        }
+        else {
+            ui->duo_p4->setCheckable(true);
+            ui->duo_p4->setChecked(true);
+        }
+        return;
+    }
+    else if (ui->player5_turn->isChecked()) {
+        // greater than 4 implies solo, othwerwise duo
+        if (on_challenge(p5->x(), p5->y()) > 4) {
+            ui->solo_p5->setCheckable(true);
+            ui->solo_p5->setChecked(true);
+        }
+        return;
+    }
+    else if (ui->player6_turn->isChecked()) {
+        // greater than 4 implies solo, othwerwise duo
+        if (on_challenge(p6->x(), p6->y()) > 4) {
+            ui->solo_p6->setCheckable(true);
+            ui->solo_p6->setChecked(true);
+        }
+        return;
+    }
+    else return;
+}
+
+void MainWindow::handleDuoComp()
+{
+    // check appropriate players box
+    if (ui->player1_turn->isChecked()) {
+        // duo is 1-4
+        if (on_challenge(p1->x(), p1->y()) < 5 && on_challenge(p1->x(), p1->y()) > 0) {
+            ui->duo_p1->setCheckable(true);
+            ui->duo_p1->setChecked(true);
+        }
+        return;
+    }
+    else if (ui->player2_turn->isChecked()) {
+        // duo is 1-4
+        if (on_challenge(p2->x(), p2->y()) < 5 && on_challenge(p2->x(), p2->y()) > 0) {
+            ui->duo_p2->setCheckable(true);
+            ui->duo_p2->setChecked(true);
+        }
+        return;
+    }
+    else if (ui->player3_turn->isChecked()) {
+        // duo is 1-4
+        if (on_challenge(p3->x(), p3->y()) < 5 && on_challenge(p3->x(), p3->y()) > 0) {
+            ui->duo_p3->setCheckable(true);
+            ui->duo_p3->setChecked(true);
+        }
+        return;
+    }
+    else if (ui->player4_turn->isChecked()) {
+        // duo is 1-4
+        if (on_challenge(p4->x(), p4->y()) < 5 && on_challenge(p4->x(), p4->y()) > 0) {
+            ui->duo_p4->setCheckable(true);
+            ui->duo_p4->setChecked(true);
+        }
+        return;
+    }
+    else if (ui->player5_turn->isChecked()) {
+        // duo is 1-4
+        if (on_challenge(p5->x(), p5->y()) < 5 && on_challenge(p5->x(), p5->y()) > 0) {
+            ui->duo_p5->setCheckable(true);
+            ui->duo_p5->setChecked(true);
+        }
+        return;
+    }
+    else if (ui->player6_turn->isChecked()) {
+        // duo is 1-4
+        if (on_challenge(p6->x(), p6->y()) < 5 && on_challenge(p6->x(), p6->y()) > 0) {
+            ui->duo_p6->setCheckable(true);
+            ui->duo_p6->setChecked(true);
+        }
+        return;
+    }
+    else return;
 }
 
 int MainWindow::on_challenge(int x, int y)
