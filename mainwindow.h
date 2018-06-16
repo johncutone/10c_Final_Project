@@ -4,7 +4,6 @@
 #include <QGraphicsScene>
 #include <QImage>
 #include <QBrush>
-#include "Player.h"
 #include <QGraphicsEllipseItem>
 
 #include <QMainWindow>
@@ -20,9 +19,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    //QGraphicsView *view;
-    //QGraphicsScene *scene;
-    Player *player_1;
     QGraphicsEllipseItem *p1;
     QGraphicsEllipseItem *p2;
     QGraphicsEllipseItem *p3;

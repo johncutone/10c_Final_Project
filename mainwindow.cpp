@@ -1,13 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-//#include "Player.h"
-//#include <QGraphicsView>
-//#include <QGraphicsScene>
-//#include <QImage>
-//#include <QBrush>
-//#include <QPixmap>
-//#include <QPalette>
-//#include <QGraphicsEllipseItem>
 #include <QDebug>
 #include <QGraphicsItem>
 #include <QPainter>
@@ -27,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow), p1(new QGraphicsEllipseItem), p2(new QGraphicsEllipseItem),
     p3(new QGraphicsEllipseItem), p4(new QGraphicsEllipseItem), p5(new QGraphicsEllipseItem),
-    p6(new QGraphicsEllipseItem), player_1(new Player)
+    p6(new QGraphicsEllipseItem)
 {
     ui->setupUi(this);
     //p1 = new Player();
