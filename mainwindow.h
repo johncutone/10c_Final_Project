@@ -46,6 +46,7 @@ private slots:
     void handleIcon4selected();
     void handleIcon5selected();
     void handleIcon6selected();
+    void handleFinalChallenge();
 private:
     Ui::MainWindow *ui;
     int on_challenge(int x, int y);

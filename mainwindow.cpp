@@ -88,6 +88,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->player4_turn, SIGNAL (clicked()), this, SLOT (handleIcon4selected()));
     connect(ui->player5_turn, SIGNAL (clicked()), this, SLOT (handleIcon5selected()));
     connect(ui->player6_turn, SIGNAL (clicked()), this, SLOT (handleIcon6selected()));
+    connect(ui->fin_chal_button, SIGNAL (released()), this, SLOT (handleFinalChallenge()));
 
     // connect start turn button
     connect(ui->roll_button, SIGNAL (released()), this, SLOT (handleTakeTurn()));
@@ -442,6 +443,7 @@ void MainWindow::easyReset()
     ui->text_output->setText("");
     ui->solo_chal_text->setText("");
     ui->duo_chal_text->setText("");
+    ui->final_chal_text->setText("");
 }
 // these handle the movement of a player and what happens when they
 // move to specific places on the board
@@ -662,6 +664,27 @@ void MainWindow::handleIcon5selected()
 void MainWindow::handleIcon6selected()
 {
     easyReset();
+}
+
+// generates final challenge
+// because this is a drinking game, sometimes everyone is
+// ready to skip to the end. So this can be clicked accessed at any time
+// or state of the board.
+void MainWindow::handleFinalChallenge()
+{
+    int x = rand() % 10;
+    switch(x) {
+        case 0: ui->final_chal_text->setText("Final Challenge 1"); break;
+        case 1: ui->final_chal_text->setText("Final Challenge 2"); break;
+        case 2: ui->final_chal_text->setText("Final Challenge 3"); break;
+        case 3: ui->final_chal_text->setText("Final Challenge 4"); break;
+        case 4: ui->final_chal_text->setText("Final Challenge 5"); break;
+        case 5: ui->final_chal_text->setText("Final Challenge 6"); break;
+        case 6: ui->final_chal_text->setText("Final Challenge 7"); break;
+        case 7: ui->final_chal_text->setText("Final Challenge 8"); break;
+        case 8: ui->final_chal_text->setText("Final Challenge 9"); break;
+        case 9: ui->final_chal_text->setText("Final Challenge 10"); break;
+    }
 }
 
 MainWindow::~MainWindow()
