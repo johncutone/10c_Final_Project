@@ -97,6 +97,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+// handles the start of a turn feature
 void MainWindow::handleTakeTurn()
 {
     // generate number of walks
@@ -112,7 +113,7 @@ void MainWindow::handleTakeTurn()
     // reset board
     easyReset();
 }
-
+// generate solo challenge button
 void MainWindow::handleGenSoloChal()
 {
     // set dummy to pointer of player whos turn it is
@@ -205,7 +206,7 @@ void MainWindow::handleGenSoloChal()
     }
     dummy = nullptr;
 }
-
+// generate duo challenge button
 void MainWindow::handleGenDuoChal()
 {
     // set dummy to pointer of player whos turn it is
@@ -298,7 +299,7 @@ void MainWindow::handleGenDuoChal()
     }
     dummy = nullptr;
 }
-
+// completed solo challenge check
 void MainWindow::handleSoloComp()
 {
     // check appropriate players box
@@ -356,7 +357,7 @@ void MainWindow::handleSoloComp()
     }
     else return;
 }
-
+// completed duo challenge check
 void MainWindow::handleDuoComp()
 {
     // check appropriate players box
@@ -410,7 +411,7 @@ void MainWindow::handleDuoComp()
     }
     else return;
 }
-
+// returns the integer code of the challenge a player is on
 int MainWindow::on_challenge(int x, int y)
 {
     // Gordo, Castle, Bellawella, Stairs, Ioadd, Etwanet, Yayao, Jug
@@ -433,7 +434,6 @@ int MainWindow::on_challenge(int x, int y)
     else
         return 0;
 }
-
 // resets all features not on board or status board
 void MainWindow::easyReset()
 {
@@ -443,7 +443,8 @@ void MainWindow::easyReset()
     ui->solo_chal_text->setText("");
     ui->duo_chal_text->setText("");
 }
-
+// these handle the movement of a player and what happens when they
+// move to specific places on the board
 void MainWindow::handleButton_r() {
     // don't allow movement if no walks left
     QString text_int = ui->walks_num->text();
@@ -642,27 +643,22 @@ void MainWindow::handleIcon1selected()
 {
     easyReset();
 }
-
 void MainWindow::handleIcon2selected()
 {
     easyReset();
 }
-
 void MainWindow::handleIcon3selected()
 {
     easyReset();
 }
-
 void MainWindow::handleIcon4selected()
 {
     easyReset();
 }
-
 void MainWindow::handleIcon5selected()
 {
     easyReset();
 }
-
 void MainWindow::handleIcon6selected()
 {
     easyReset();
