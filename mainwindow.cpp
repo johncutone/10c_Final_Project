@@ -102,7 +102,7 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::handleTakeTurn()
 {
     // generate number of walks
-    int walks = (rand() % 10) + 1;
+    int walks = (rand() % 12) + 1;
     ui->walks_num->setText(QString::number(walks));
 
     // generate chance of drinking
@@ -451,7 +451,7 @@ void MainWindow::handleButton_r() {
     // don't allow movement if no walks left
     QString text_int = ui->walks_num->text();
     int x = text_int.toInt();
-    //if (x == 0) return;
+    if (x == 0) return;
 
     // set dummy to pointer of player whos turn it is
     QGraphicsEllipseItem *dummy;
@@ -499,7 +499,7 @@ void MainWindow::handleButton_l() {
     // don't allow movement if no walks left
     QString text_int = ui->walks_num->text();
     int x = text_int.toInt();
-    //if (x == 0) return;
+    if (x == 0) return;
 
     // set dummy to correct player icon
     QGraphicsEllipseItem *dummy;
@@ -547,7 +547,7 @@ void MainWindow::handleButton_d() {
     // don't allow movement if no walks left
     QString text_int = ui->walks_num->text();
     int x = text_int.toInt();
-    //if (x == 0) return;
+    if (x == 0) return;
 
     // set dummy to correct player icon
     QGraphicsEllipseItem *dummy;
@@ -595,7 +595,7 @@ void MainWindow::handleButton_u() {
     // don't allow movement if no walks left
     QString text_int = ui->walks_num->text();
     int x = text_int.toInt();
-    //if (x == 0) return;
+    if (x == 0) return;
 
     // set dummy to correct player icon
     QGraphicsEllipseItem *dummy;
