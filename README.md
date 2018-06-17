@@ -2,8 +2,15 @@
 As a senior about to finish my college years, I decided to go out like any college student should, by coding a drinking game! The game
 acts as a virtual board game. In an effort to protect the integrity of the student professor relationship, actual drinking challenges
 are kept secretive (as challenge 1, challenge 2, etc), this will become more clear when you run the program. I have come to realize that 
-creating a concept for a game can be much harder than actually coding it. Also, note that I had trouble getting git to work with my qt 
-creator so the first commits are about halfway through the process. Here are the rules:
+creating a concept for a game can be much harder than actually coding it. I had to spend a couple nights brainstorming ideas with my 
+brother before settling on a concept. I had some trouble at first getting multiple files to work, so I used the TA's advice, and coded it
+predominately in one file. Some improvements include having a window pop up before the game starts to fill in infomation about the desired
+game settings. I would also like to find more interesting player icons. The depth in the game really comes from how much fun each
+challenge is. To take that on I have asked different friends to come up with ideas for challenges that way each areas group of challenges
+will come from a different thought process. This process has lead me to better appreciate game developers for their creativity.
+
+Also, note that I had trouble getting git to work with my qt creator so the first commits are about halfway through the process.
+Here are the rules:
 
 Welcome! To the world of M.A. Inwindow. You (and up to five others) have wound up on a island in another dimension and theres only one way 
 off. You must show your worth by completing challenges on your own and with a friend before you can test yourself with the final challenge
