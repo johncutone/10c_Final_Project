@@ -7,7 +7,10 @@ brother before settling on a concept. I had some trouble at first getting multip
 predominately in one file. Some improvements include having a window pop up before the game starts to fill in infomation about the desired
 game settings. I would also like to find more interesting player icons. The depth in the game really comes from how much fun each
 challenge is. To take that on I have asked different friends to come up with ideas for challenges that way each areas group of challenges
-will come from a different thought process. This process has lead me to better appreciate game developers for their creativity.
+will come from a different thought process. This process has lead me to better appreciate game developers for their creativity. Most of
+my research in how to design a game in QT came from this tutorial:
+
+https://www.youtube.com/watch?v=8ntEQpg7gck&list=PLyb40eoxkelOa5xCB9fvGrkoBf8JzEwtV
 
 Also, note that I had trouble getting git to work with my qt creator so the first commits are about halfway through the process.
 Here are the rules:
